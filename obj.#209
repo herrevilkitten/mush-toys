@@ -1,0 +1,9 @@
+@create BTTF=10
+@lock BTTF=*FalseEric
+&FNC_COMBO BTTF=[setq(0,get(%1/PROPLOC))][ifelse(gt(rand(100),90),,first([ifelse(strmatch(%0,extract(get(%q0/COMBO),2,1,:)),%q0/COMBO%b,)][iter(lattr(%VD/COMBO_*),ifelse(strmatch(%0,extract(get(%VD/##),2,1,:)),%VD/##,))]))]
+&FNC_ANDLIST BTTF=[ifelse(gt(words(%0,%1),1),[setq(0,extract(%0,1,dec(words(%0,%1)),%1))][trim(iter(%q0,##%,,%1),R,%,)] and%B,)][last(%0,%1)]
+&FNC_BAD_ADVERB BTTF=[setq(0,get(%VD/LIST.BAD_ADVERB))][setq(1,inc(rand(words(%q0))))][extract(%q0,%q1,1)]
+&FNC_MOVE_MESSAGE BTTF=[setq(0,last(ulocal(%VD/MOVE_%0,%1,%2),:))][setq(1,inc(rand(words(%q0,~))))][extract(%q0,%q1,1,~)]
+&FNC_MOVE_DAM BTTF=[setq(0,extract(%1,sub(words(%1),2),2))][setq(1,[extract(get(%VD/MOVE_%0),2,1,:)]+[switch(last(%q0),dash,1,jump,2+[switch(first(%q0),dash,1,0)],0)])][ladd(iter(%q1,u(#89/FNC_ROLL_SUB,##),+))]
+@Vd BTTF=#208
+&FNC_COMBO_DAM BTTF=[setq(0,iter(extract(get(%0),2,1,:),[extract(get(%VD/MOVE_##),2,1,:)]+[switch(##,jump,1,punch,1,kick,2,throw,3,weapon,5,1d2-1)],,+))][ladd(iter(%q0,u(#89/FNC_ROLL_SUB,##),+))]

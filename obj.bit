@@ -1,0 +1,6 @@
+@create Bit=10
+&CMD_+BIT Bit=$+bit:say [ifelse(rand(2),Yes,No)].
+@Desc Bit=It's that +bit, from TRON.
+&CMD_+BIT_ARG Bit=$+bit *:@emit %N says to Bit "%0"; say [ifelse(rand(2),Yes,No)].
+@set Bit=DARK
+@set Bit=COMMANDS

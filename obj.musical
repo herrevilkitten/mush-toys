@@ -1,0 +1,41 @@
+@create Musical instruments=10
+@Desc Musical instruments=A pile of musical instruments is here. Sifting through, you can make out the following:[iter(v(INSTRUMENT),%R##,|)]
+&INSTRUMENT Musical instruments=Doom Bell (+doom) - A large bronze bell with the word 'DOOM' engraved on the outside.|Chime of Joy and Happiness (+chime) - A beautiful silver chime with 'Joy and Happiness' engraved on the side.|Drum of Blood and Guts (+drum) - A huge drum made of bone and flesh with 'Blood and Guts' scrawled on it in blood.
+&CMD_+CHIME Musical instruments=$+chime:@dolist [setq(0,rand(words(lattr(ME/CHIME_MSG_*))))][lcon(loc(%#))]={@pemit ##=[ifelse(match(get(##/INSTRUMENTS),chime),%N rings the Chime of Joy and Happiness.%R[u(ME/CHIME_MSG_%Q0)],)]}
+&CHIME_MSG_1 Musical instruments=Flowers and butterflies of all colors float gently around %o.
+&CHIME_MSG_0 Musical instruments=A rainbow of marvelous colors arcs over %p head.
+&CHIME_MSG_2 Musical instruments=The sun smiles widely and begins singing o/~ Smile, smile, smile - all creation smiles.. o/~
+&CHIME_MSG_3 Musical instruments=A hail of shooting stars go through the sky, spreading good luck and cheer.
+&CHIME_MSG_4 Musical instruments=A giant cake appears in front of %N, with lots of presents surrounding it.
+&CHIME_MSG_5 Musical instruments=Two strange mice break into a chorus of 'Somewhere Out There' from An American Tail.
+&CHIME_MSG_6 Musical instruments=Sprites and Pixies dance about %N, spreading magical dust of love and happiness.
+&CHIME_MSG_7 Musical instruments=Comely servants appear to take care of %p every wish and whim.
+&CHIME_MSG_8 Musical instruments=Flowers spring up from underfoot and magical sunbeams shine gloriously on %p heavenly face.
+&DOOM_MSG_0 Musical instruments=%S is doomed! d00m! d00m! d00m!
+&DOOM_MSG_1 Musical instruments=Doom, tired of having his bell rung OVER AND OVER AGAIN, rings the %N Bell. %N goes splat.
+&DOOM_MSG_2 Musical instruments=Doom comes to visit, has a nice tea, a few crumpets, and then insists on taking his leave.
+&DOOM_MSG_3 Musical instruments=Nothing happens. (%N has used up all %p doom privileges.)
+&DOOM_MSG_4 Musical instruments=%N erupts in a tower of flame!
+&DOOM_MSG_5 Musical instruments=Unfortunately, that Bell has been disconnected and is no longer in service.
+&DOOM_MSG_6 Musical instruments=Doom and %N have a heartwarming crying session and both of them feel a lot better afterwards.
+&CMD_+DOOM Musical instruments=$+doom:@dolist [setq(0,rand(words(lattr(ME/DOOM_MSG_*))))][lcon(loc(%#))]={@pemit ##=[ifelse(match(get(##/INSTRUMENTS),bell),%N rings the Doom Bell.%R[u(ME/DOOM_MSG_%Q0)],)]}
+&DOOM_MSG_7 Musical instruments=A giant pair of lips appear out of nowhere and declare "LET THERE BE LIPS!" before breaking out into the opening song of 'The Rocky Horror Picture Show'
+&DOOM_MSG_8 Musical instruments=The wicked witch of the west flies around on her broom, cackling "I'll get you, my pretty. You and your little dog, Toto, too."
+&DOOM_MSG_9 Musical instruments=[switch(0[get(%#/FAITH)],0,Doom laughs maliciously at %N and tries to rip %p soul out. [switch(rand(2),0,Sadly%, %N doesn't have one.)],01,Doom eyes %N warily and offers to purchase %p soul for a small amount.,02,Doom stalks %N cautiously.,03,Doom buys a high-powered assault rifle and targets %N from afar.,04,Ninjas and assassins lie in wait above %N until Doom gives the signal and they drop down to attack%, bringing death and destruction (and doom) with them!,05,Doom calls %N on the phone and makes crude threats.,The sheer power of %N's Faith keeps Doom at bay. For now.)]
+&DRUM_MSG_0 Musical instruments=The Heavens open up and a rain of blood covers the land as the walking dead march forth, rending and tearing those they come upon.
+&CMD_+DRUM Musical instruments=$+drum:@dolist [setq(0,rand(words(lattr(ME/DRUM_MSG_*))))][lcon(loc(%#))]={@pemit ##=[ifelse(match(get(##/INSTRUMENTS),drum),%N bangs on the Drum of Blood and Guts.%R[u(ME/DRUM_MSG_%Q0)],)]}
+&DRUM_MSG_1 Musical instruments=%P arm falls off. Then %p leg. And the other one. Another arm. Finally, the unsupported body falls to the ground with a sickening thud.
+&DRUM_MSG_2 Musical instruments=A poison-tipped spear is flung through %p body, embedding itself in the ground as the malicious poison begins to slowly dissolve %N!
+&DRUM_MSG_3 Musical instruments=Cracks rend the earth and %N falls into the Pits of Hades, slowly consumed in the fires of Hell as demons tear flesh from %p body!
+&DRUM_MSG_4 Musical instruments=From the corners of the earth ride the Horsemen of the Apocalypse, bringing War, Famine, Pestilence, and Death upon all those they encounter!
+&DRUM_MSG_5 Musical instruments=The Beast crawls forth from its lair an gathers an army of foul sinners and walking dead, intent on bringing destruction upon the world!
+&DRUM_MSG_6 Musical instruments=Locusts sweep down upon %N and slowly tear and eat every piece of flesh from %p body!
+&DRUM_MSG_7 Musical instruments=Spirits of the dead rise up and begin to take vengeance upon the living for mortal crimes from times beyond human memory!
+&DRUM_MSG_8 Musical instruments=%N bursts into flames and is slowly and painfully burned unto a small pile of ash.
+&DRUM_MSG_9 Musical instruments=Clocks around the world strike 13 times and meteorites fall from the Heavens, bringing destruction and death with them.
+&DRUM_MSG_10 Musical instruments=The Secret Masters make themselves known to their servants and the world comes under the dominion of the Those Who Cannot be Named, its population reduced to nothing more than mindless slaves to evil.
+&DRUM_MSG_11 Musical instruments=%N explodes violently, showering blood and body parts over a several-mile radius.
+@set Musical instruments=DARK
+@set Musical instruments=INHERIT
+@set Musical instruments=VISUAL
+@set Musical instruments=COMMANDS

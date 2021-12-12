@@ -1,0 +1,68 @@
+@create Conspiracy Generator:CG=10
+&CMD_+CONSPIRE Conspiracy Generator:CG=$+conspire:setq(0,lattr(ME/TEMPLATE.*)); setq(1,inc(rand(words(%q0)))); setq(0,get(ME/[extract(%q0,%q1,1)])); setq(1,edit(iter(%q0,switch(left(##,1),$,ulocal(ME/FNC_RND_ENTRY,after(##,$)),##)),%b^,)); @pemit/contents %l=%N spreads the news: [capstr(%q1)]
+&PERSON Conspiracy Generator:CG=Zeke|Eric|Bubbles|Steve|Kitsune|Rorschach|Andrew Johnson|Alexander Hamilton|John F. Kennedy|Robert Kennedy|Ronald Reagan|George Washington|Abraham Lincoln|Saddam Hussein|Winston Churchill|Humphrey Bogart|Errol Flynn|John Wilkes Booth|Aaron Burr|Newt Gingrich|Ralph Nader|Jacques Cousteau|Herbert Kornfeld|Smoove B|Elvis|David Bowie|Al Gore|Tipper Gore|Carly Fiorina|JR "Bob" Dobbs|Domo-kun|Rosie
+&FNC_RND_ENTRY Conspiracy Generator:CG=[edit(iter(%0,[setq(1,right(##,1))][setq(0,ulocal(ME/[ifelse(isword(##),##,before(##,%q1))]))][extract(%q0,inc(rand(words(%q0,|))),1,|)][ifelse(isword(##),,%q1)],$,~),~,)]
+&PLANET Conspiracy Generator:CG=Mercury|Venus|Earth|Mars|Jupiter|Saturn|Uranus|Neptune|Pluto|Planet X|the moon|the sun
+@Desc Conspiracy Generator:CG=Want to +conspire? There are [words(lattr(ME/TEMPLATE.*))] templates.%rThe following variables are available for templates:%r[columns(setdiff(lattr(ME),[lattr(ME/TEMPLATE.*)] [lattr(ME/CMD_*)] [lattr(ME/FNC_*)] Desc),19)]
+&LOCATION Conspiracy Generator:CG=Ann Arbor|Washington, D.C.|Indianapolis|Area 51|Arlington Cemetery|Iraq|the Washington Monument|the Jefferson Memorial|Camp David|Babylon|a bunker under the Rocky Mountains|the University of Michigan steam tunnels|the Statue of Liberty's torch|Massachusetts Institute of Technology
+&EVENT Conspiracy Generator:CG=the NCAA championships|the invasion of Kuwait|the assassination of JFK|the collapse of the Dotcoms|the Iditarod|the last presidential election|the OJ Simpson trial|the Waco incident|the Timecube conference|the Apollo moon landing|the Challenger explosion|the Apocalypse|the landing at Normandy|the Norman Invasion
+&GROUP Conspiracy Generator:CG=the Illuminati|the Bilderbergers|the Priory of Sion|the Scotch Rite Freemasons|Congress|the Council on Foreign Relations|the fashion industry|the Moral Majority|Texas|FEMA|PETA|the Moral Majority|the religious right|the Democratic Party|the Republican Party|France|the Green Party|Run DMC|the Knights Templar|Proctor & Gamble|Disney|Eli Lilly|the religious left|Baltimora|the Church of Elvis
+&ZODIAC Conspiracy Generator:CG=Aquarius|Pisces|Libra|Virgo|Taurus|Saggitarius|Leo|Gemini|Scorpio|Capricorn|Cancer|Aries|Ophiuchus
+&CORPORATION Conspiracy Generator:CG=Disney|Proctor & Gamble|General Motors|Ford|SBC Global Network|Eli Lilly|MCI WorldCom|Deutsches Bundesbank|Deutsches Telekom|Energizer|General Mills|Fox|Universal Pictures|AOL Time-Warner|Nintendo|Sony|Microsoft
+&NUMBER Conspiracy Generator:CG=a dozen|ten|a hundred|five-thousand, two-hundred, and twenty-three|one|two|three|seven|ten-thousand|a lot|a couple|a few|thirteen|twenty|fifty|one-hundred|zero
+&COUNTRY Conspiracy Generator:CG=the United States|Japan|China|Russia|Germany|France|the United Kingdom|Indonesia|Malaysia|South Korea|Vietnam|Singapore|Zimbabwe|South Africa|Australia|Russia
+&TOY Conspiracy Generator:CG=Legos|the Gamecube|the Playstation 2|the X-Box|hackey sacks|frisbees|20-sided dice|Magic: the Gathering cards|the Black Lotus (tap for three mana of any color) card|a Super Monkey Ball game
+&MYSTADJ Conspiracy Generator:CG=mystical|psychic|religious|metaphysical|heavenly
+&SONG Conspiracy Generator:CG=Tarzan Boy|Modern Love|Let's Dance|Ironic|November Rain|Achy-Breaky Heart|Another Brick in the Wall|Once in a Lifetime|Back in the High Life Again|Bohemian Rhapsody|The Star Spangled Banner|Oops I Did It Again|Hey Hey We're The Monkees
+&CMD_+CONSPIRE_ARG Conspiracy Generator:CG=$+conspire *:setq(0,sort(lattr(ME/TEMPLATE.*),a)); setq(0,get(ME/[extract(%q0,%0,1)])); setq(1,edit(iter(%q0,switch(left(##,1),$,ulocal(ME/FNC_RND_ENTRY,after(##,$)),##)),%b^,)); @pemit/contents %l=%N spreads the news: [capstr(%q1)]
+&LETTER Conspiracy Generator:CG=A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z
+&DIGIT Conspiracy Generator:CG=0|1|2|3|4|5|6|7|8|9
+&MONTH Conspiracy Generator:CG=January|February|March|April|May|June|July|August|September|October|November|December
+&WEEKDAY Conspiracy Generator:CG=Sunday|Monday|Tuesday|Wednesday|Thursday|Friday|Saturday
+&GODS Conspiracy Generator:CG=Odin|Osiris|Isis|Thor|Jehovah|Tiamat|Cthulhu|Hathor|Set|Baal|Loki|Athena
+&CMD_+CONSPIRE_ADD Conspiracy Generator:CG=$+conspire/add *=*:@pemit %#=>> Adding '%1' to the group '%0'.; &%0 ME=[trim([get(ME/%0)]|%1,l,|)]
+&LIQUID Conspiracy Generator:CG=water|Beer
+&CMD_+CONSPIRE_TEMPLATE Conspiracy Generator:CG=$+conspire/template *:setq(0,inc(words(lattr(ME/TEMPLATE.*)))); @pemit %#=>> Adding '%0' as template #%q0.; &TEMPLATE.[rjust(%q0,3,0)] ME=%0
+&CMD_+CONSPIRE_LIST_ARG Conspiracy Generator:CG=$+conspire/list *:@pemit %#=Entries in category '[lcstr(%0)]':%r[columns(get(ME/%0),19,|)]
+&CMD_+CONSPIRE_LIST Conspiracy Generator:CG=$+conspire/list:@pemit %#=Valid categories:%r[columns(setdiff(lattr(ME),[lattr(ME/TEMPLATE.*)] [lattr(ME/CMD_*)] [lattr(ME/FNC_*)] Desc),19)]
+&YEAR Conspiracy Generator:CG=1776|1984|2000|999
+&NEWSPAPER Conspiracy Generator:CG=The New York Times|The Washington Post|The Indianapolis Star|The Weekly World News|The Onion
+&TEMPLATE.001 Conspiracy Generator:CG=$person was sighted near $location immediately after $event. Perhaps this has some connection to the disappearance of $person after the eclipse of $planet.
+&TEMPLATE.002 Conspiracy Generator:CG=$person was conspicuously absent from the membership rolls of $group. This reflects poorly on their claims of innocence regarding $event.
+&TEMPLATE.003 Conspiracy Generator:CG=$person, $person, and $person have been spotted together. While the evidence suggests they are a member of $group, their association with $person, especially regarding $event, can only mean they have ties with $group.
+&TEMPLATE.004 Conspiracy Generator:CG=The last time $event occured, $person and $person were absent from $location. Very suspicious. Even more suspicious: they claimed to be at $event. HOWEVER, $person was verifiably there and they were not.
+&TEMPLATE.005 Conspiracy Generator:CG=Ancient texts that $group are attempting to hide show that there will soon be a grand cross of $planet, $planet, $planet, and $planet -- all occuring in the realm of $zodiac.
+&TEMPLATE.007 Conspiracy Generator:CG=$corporation owns $person. In fact, that is the reason they were involved with $group and $event.
+&TEMPLATE.008 Conspiracy Generator:CG=$PERSON told me that $GROUP is secretly building up their power base in $LOCATION, and if $GROUP ever finds out about it, it might lead to a repeat of $EVENT!
+&TEMPLATE.006 Conspiracy Generator:CG=$newspaper - the finest journalism in the world - managed to trump $newspaper in reporting that $group and $corporation were escalating their cold war. Last week alone, $number people died during $event because of this.
+&TEMPLATE.009 Conspiracy Generator:CG=The moon landing WAS faked. Apollo actually landed on $planet at the behest of $group (secretly funded by $corporation ^). For mystical reasons, $group demanded this occur while $zodiac was at its greatest power.
+&TEMPLATE.010 Conspiracy Generator:CG=While it's common knowledge that $group was behind the attempted assassination of $person, few people know that $group was also involved. In fact, they have been involved with the assassinations of $number world leaders in the past decade.
+&TEMPLATE.011 Conspiracy Generator:CG=$PERSON has definitive proof that $GROUP worked with $GROUP, and hired $PERSON to assassinate $PERSON. The attempt was to take place while $PLANET was in $ZODIAC, to fulfill an ancient prophecy. But the plot was foiled by $CORPORATION, who needed that person alive to influence $EVENT.
+&TEMPLATE.012 Conspiracy Generator:CG=Playing with $toy can apparently increase your $mystadj powers. However, $group and $corporation both know this and are rounding up the people who are doing this.
+&TEMPLATE.013 Conspiracy Generator:CG=I've heard that $corporation developed $toy as a mind control device.
+&TEMPLATE.014 Conspiracy Generator:CG=I've heard that $corporation developed $toy as a mind control device. However, $corporation found out about this and rigged the device to cause anarchy instead of control!
+&TEMPLATE.015 Conspiracy Generator:CG=Listening to $song, especially when sung by $person, can drive a person mad -- or make them SANE, if they are mad already.
+&TEMPLATE.016 Conspiracy Generator:CG=Last weekend, $PERSON reported being kidnapped by $NUMBER $MYSTADJ beings after seeing $NUMBER strange lights in the sky. The beings advised that $GROUP has sinister plans for $TOY, and then dropped them in $COUNTRY by mistake.
+&TEMPLATE.017 Conspiracy Generator:CG=It was revealed to me in a dream (in which God looked suspiciously like $person) that the number of the beast was really $digit$digit$digit, NOT 666.
+&TEMPLATE.018 Conspiracy Generator:CG=On a $weekday last $month, $group held a $mystadj ceremony celebrating $gods.
+&TEMPLATE.019 Conspiracy Generator:CG=Beware the Ides of $month! The assassination of Caesar of the Ides of March was only the beginning of a millinenia-long $mystadj ritual to bring about the rise of $gods and the fall of $group.
+&TEMPLATE.020 Conspiracy Generator:CG=$newspaper is reporting that $group (through their proxy, $person) is attempting to destroy $country by inciting a war with $country. This is because of their $number year old feud with $group.
+&PLAYER Conspiracy Generator:CG=[setq(0,lwho())][name(extract(%q0,inc(rand(words(%q0))),1))]
+&TEMPLATE.021 Conspiracy Generator:CG=Both $player and $player are known to be agents of $group spying on $corporation. In fact, they were responsible for the disappearance of the leader of $country last $month. It is rumored that they are also in thrall to $group because of some unknown debt.
+&INSTRUMENT Conspiracy Generator:CG=piano|guitar|tuba|oboe|flute|violin
+&TEMPLATE.022 Conspiracy Generator:CG=Playing $song on a $instrument has been known to summon the Dark Lords. $group has used this tactic repeatedly in its efforts to rule $country.
+&METAL Conspiracy Generator:CG=iron|gold|silver|copper|steel|zinc
+&SHAPE Conspiracy Generator:CG=square|circle|pentagon|pentagram|triangle|oval|trapezoid|rectangle
+&TEMPLATE.023 Conspiracy Generator:CG=$metal $instrument ^s, when placed in a $metal $shape, can be used to hold the vampiric members of $group at bay. This does not work in $country, however, because of an ancient curse. To counter this, the instruments must be blessed by $gods.
+&BOOK Conspiracy Generator:CG=the Necronomicon|the King James Bible|the Torah|the Talmud|the NIV Bible|the collected works of Edgar Allen Poe|the Key of Solomon|the Emerald Tablet|the Golden Bough|the Malleus Maleficarum|the Oracles of Nostradamus|the Witch-Cult in Western Europe|the Zohar|der Hexenhammer|Al Azif|De Vermiis Msteriis|Cultes des Goules|the King in Yellow
+&TEMPLATE.024 Conspiracy Generator:CG=Reading $book can grant strange insights and madness. $person is said to have read it and $book, without the protection of a $shape of salt. The ancient spirits that control $group then took control and forced the body to commit unspeakable acts.
+&TEMPLATE.025 Conspiracy Generator:CG=Hidden in the basement of $CORPORATION world headquarters is the fabled $INSTRUMENT of $GODS. When used ritually with the $SHAPE of $GODS, it allows the user to enter a $MYSTADJ trance and obtain the deep hidden knowledge buried within $BOOK, but only if the ritual is performed while $PLANET is in $ZODIAC. $GROUP and $PERSON, of course, are trying desparately to obtain these $MYSTADJ relics, but $GROUP and $PLAYER are trying just as desparately to stop them.
+&TEMPLATE.026 Conspiracy Generator:CG=Every time you kill a member of $group, God kills $singanimal.
+&SINGANIMAL Conspiracy Generator:CG=a kitten|a puppy|a horse|a Domo-kun|a parrot|a bird|a dolphin|a snake|a stunt animal|an anaconda|a rabbit|a cow|a llama
+&TEMPLATE.027 Conspiracy Generator:CG=Every time you say that God kills $singanimal if you kill a member of $group, God kills $singanimal.
+&TEMPLATE.028 Conspiracy Generator:CG=$person said that women plan to reduce men to mere breeding thralls by dominating them with telepathic porn!
+&TEMPLATE.029 Conspiracy Generator:CG=*
+&TEMPLATE.030 Conspiracy Generator:CG=gods song toy
+@set Conspiracy Generator:CG=DARK
+@set Conspiracy Generator:CG=VISUAL
+@set Conspiracy Generator:CG=COMMANDS

@@ -1,0 +1,6 @@
+@create Generic 8Ball Parent:G8P=10
+&F_GETQUOTE Generic 8Ball Parent:G8P=[setq(0,lattr(ME/QUOTE_*))][setq(1,words(%q0))][setq(2,inc(rand(%q1)))][setq(3,extract(%q0,%q2,1))][get_eval(ME/%q3)]
+&C_GETQUOTE_ARG Generic 8Ball Parent:G8P=$+g8p * *:setq(s,locate(%#,%0,in)); @switch/first %qs=#-1,{@pemit %#=>> '%0' is not a valid G8P object.},{setq(l,lcon(loc(%#))); @emit [udefault(%qs/F_ASK_WISDOM,%N asks for wisdom: %1,%1)]; @dolist/delim | [setq(0,lattr(%qs/QUOTE_*))][setq(1,words(%q0))][setq(2,inc(rand(%q1)))][setq(3,extract(%q0,%q2,1))][get_eval(%qs/%q3)]={@pemit/list [lcon(loc(%#))]=[trim(first(nescape(##),:),l,%\)] says, "[trim(rest(nescape(##),:))]"}}
+&C_GETQUOTE Generic 8Ball Parent:G8P=$+g8p *:setq(s,locate(%#,first(%0),in)); @switch/first %qs=#-1,{@pemit %#=>> '%0' is not a valid G8P object.},{@dolist/delim | [setq(0,lattr(%qs/QUOTE_*))][setq(1,words(%q0))][setq(2,inc(rand(%q1)))][setq(3,extract(%q0,%q2,1))][get_eval(%qs/%q3)]={@pemit/list [lcon(loc(%#))]=[trim(first(nescape(##),:),l,%\)] says, "[trim(rest(nescape(##),:))]"}}
+@set Generic 8Ball Parent:G8P=INHERIT
+@set Generic 8Ball Parent:G8P=COMMANDS

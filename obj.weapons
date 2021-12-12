@@ -1,0 +1,16 @@
+@create Weapons Locker=10
+@lock Weapons Locker=*Eric
+&FIRE-STYLE Weapons Locker=Repeating|Single-Shot|Muzzle-Loading|Auto-Fire|Double-Barrelled|Heat-Seeking|Sawed-Off|Portable
+&FIRE-AMMO Weapons Locker=Plasma|Laser|Blackpowder|CO2|Anti-Matter|Photon|Napalm|Atomic|switch(rand(5),0,Poison Gas,1,Mustard Gas,2,Agent Orange,3,Sarin,Poo Gas)|Sniper|LightWave|Acid|Weather|switch(rand(5),0,Anthrax,1,Plague,2,Ebola,3,Hepatitis,Influenza)
+&FIRE-NAME Weapons Locker=Nail Gun|Machine Gun|Howitzer|Crossbow|Mega Cannon|Shotgun|Tube|Cannon|Auto Cannon|Blaster|Projector|Rifle|Pistol|Revolver|Mortar|Grenade Launcher|Planet Destroyer|Trebuchet|Zip-Gun|Musket
+&FIRE Weapons Locker=$+fire:@emit %n fires %p [setq(0,switch(rand(5),0,v(fire-adjectives),v(fire-style)))][setq(2,switch(rand(10),0,v(fire-sillyname),v(fire-name)))][switch(rand(3),0,extract(%q0,add(1,rand(words(%q0,|))),1,|)%b)][eval(extract(v(fire-ammo),add(1,rand(words(v(fire-ammo),|))),1,|))] [s(extract(%q2,add(1,rand(words(%q2,|))),1,|))]
+&FIRE-SILLYNAME Weapons Locker=Waffle Iron|GEKKIGANGER FIST!|Discombobulator|h@x0r T00b|Wasabi Ray|Transmorgifier
+&FIRE-ADJECTIVES Weapons Locker=Gem-Encrusted|Gilded|Chrome Plated|Winged|Oversized|Galvanized|Personalized|Scoped
+@Desc Weapons Locker=+fire%r+fire at <target>%rThanks, Dave
+&FIREAT Weapons Locker=$+fire at *:@emit %n fires %p [setq(0,switch(rand(5),0,v(fire-adjectives),v(fire-style)))][setq(2,switch(rand(10),0,v(fire-sillyname),v(fire-name)))][setq(7,switch(rand(3),0,extract(%q0,add(1,rand(words(%q0,|))),1,|)%b))][setq(8,eval(extract(v(fire-ammo),add(1,rand(words(v(fire-ammo),|))),1,|)))][setq(9,s(extract(%q2,add(1,rand(words(%q2,|))),1,|)))]%q7%q8 [switch(%q9,Star Wars*,edit(%q9,blaster,blaster at %0),%q9 at %0)] [u(effect[rand(words(lattr(me/effect*)))])]
+&EFFECT0 Weapons Locker=switch(or(strmatch(%q9,*Star Wars*),strmatch(%q9,Orgasmo-Ray)),0,switch([setq(4,rand(100))]1,eq(%q4,0),u(me/big-effects),lt(%q4,12),but misses!,and hits for [setq(5,switch(%q8,Atomic,add(100000,rand(1000000)),Plasma,rand(3000),LightWave,rand(30000),Anti-Matter,rand(10000),Sniper,rand(500),Acid,rand(1000),Napalm,rand(2000),rand(100)))][switch(%q9,Cannon,mul(%q5,5),Auto Cannon,mul(%q5,10),Mortar,mul(%q5,4),Waffle Iron,mul(%q5,7),Grenade Launcher,mul(%q5,3),Nail Gun,mul(%q5,3),Howitzer,mul(%q5,5),Planet Destroyer,mul(%q5,100000),Mega Cannon,mul(%q5,1000),Machine Gun,mul(%q5,3),Trebuchet,mul(%q5,2),add(%q5,rand(100)))] damage points!),switch(1,strmatch(%q9,*Star Wars*),u(me/starwars-effect0),strmatch(%q9,Orgasmo-Ray),u(me/orgasmo-effect0)))
+&BIG-EFFECTS Weapons Locker=switch(rand(5),0,{and vaporizes the target!},1,{and reduces the target to its base elements.},2,{causing massive destruction which crushes the target.},3,{and destroys the target. ew, it's not pretty.},{and blasts the target from existance.})
+&STARWARS-EFFECT0 Weapons Locker=switch(rand(3),0,{but misses stylishly.},1,{and hits, leaving the bar in awe.},{and hits, but spills a few drops of beer!})
+&ORGASMO-EFFECT0 Weapons Locker=switch(rand(2),0,but misses!,and hits! Someone get a mop!)
+@set Weapons Locker=DARK
+@set Weapons Locker=COMMANDS

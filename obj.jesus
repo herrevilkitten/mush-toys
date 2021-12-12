@@ -1,0 +1,13 @@
+@create Baby Jesus=10
+&CMD_+BABYJESUS Baby Jesus=$+babyjesus *:@emit %N says to Baby Jesus: "%0"; pose [ifelse(rand(3),cries,does not cry)].
+@Desc Baby Jesus=You've seen the nativity scene. If you want to know his opinion, try to +babyjesus him.
+@set Baby Jesus=DARK
+@set Baby Jesus=COMMANDS
+@create Baby Jesus=10
+&CMD_+BABYJESUS Baby Jesus=$+babyjesus *:@emit %N says to Baby Jesus: "%0"; pose [ifelse(rand(3),cries,does not cry)].
+@Desc Baby Jesus=You've seen the nativity scene. If you want to know his opinion, try to +babyjesus him.
+@set Baby Jesus=DARK
+@set Baby Jesus=COMMANDS
+WW Finished Saving jesus WW
+NoIdle
+NoIdle

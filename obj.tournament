@@ -1,0 +1,28 @@
+@create BESM Tag Tournament=10
+&CMD_+ATTACK BESM Tag Tournament=+attack * with *: setq(0,first(pmatch(%0))); setq(1,ifelse(isdbref(%q0),name(%q0),%0)); @emit %N faces off against %q1 in the BESM Tag Tournament arena!; @trigger ME/TRG_DOMOVE=%#,%q1,%1,100,
+&TRG_DOMOVE BESM Tag Tournament=setq(0,trim(first(%2,%,),b)); setq(1,rest(%2,%,)); setq(2,%4 %q0); setq(3,MOVE_[edit(%q0,%b,_)]); setq(4,u(ME/FNC_COMBO,trim(%q2,b))); @switch/first 0=words(%q0),{},hasattr(ME,%q3),{@pemit %0=You do not know that move: %q0!},gt(sub(%3,first(get(ME/%q3),:)),rand(100)),{@emit A miss!},eq(words(%q4),0),{setq(4,u(ME/%q4,name(%0),%1)); setq(5,ladd(iter(extract(%q4,3,1,:),u(#89/FNC_ROLL_SUB,##),+))); @emit ** [first(%q4,:)] ** [edit(last(%q4,:),**,%q5 point[switch(%q5,1,,s)] of damage)]},{setq(4,u(ME/%q3,name(%0),%1)); setq(5,first(%q4,:)); setq(6,ladd(iter(extract(%q4,2,1,:),u(#89/FNC_ROLL_SUB,##),+))); setq(7,last(%q4,:)); setq(8,words(%q7,~)); setq(9,edit(extract(%q7,inc(rand(%q8)),1,~),**,%q6 point[switch(%q6,1,,s)] of damage)); @emit %q9; @trigger ME/TRG_DOMOVE=%0,%1,%q1,sub(%3,%q5),%q2}
+&MOVE_PUNCH BESM Tag Tournament=5:1d6:lands a punch in the gut~strikes with [poss(%0)] forearm, causing blood to spurt as %1's nose is shattered~hits %1 with an open-palmed slap to the face
+@Desc BESM Tag Tournament=+attack <thing> with <move list>%rThe following moves are available:[iter(sort(lattr(ME/MOVE_*)),%r[edit(after(##,MOVE_),_,%b)])]%rExample: +attack Eric with jump kick punch punch%rWatch for combos!%RSome combos:%rpunch punch punch - Thunder Strike%rkick kick jump kick - Devil-spin Kkick
+&MOVE_KICK BESM Tag Tournament=7:1d8+1:kicks at %1, [poss(%0)] foot impacting with %1's head in a roundhouse kick~lands a kick on %1~does a quick feint before landing a kick
+&COMBO_1 BESM Tag Tournament=Thunder Strike:punch punch punch:3d6+6:[name(%0)]'s fists strike like lightning, the impact sounding like thunder as %1 staggers
+&COMBO_2 BESM Tag Tournament=Storm Strike:punch punch punch punch:4d8+4:strikes %1 as flashes of lightning fill the arena and the thunder of a storm can be heard on the horizon
+&COMBO_3 BESM Tag Tournament=Devil-spin Kick:kick kick jump kick:4d10+4:After two rapid-fire kicks, [name(%0)] suddenly jumps in the air, spinning. [capstr(poss(%0))] outstretched leg catches %1 in the head, knocking %1 across the arena
+&MOVE_TRIP BESM Tag Tournament=1:1d3-1:sticks [poss(%0)] foot out, catching %1 off-guard and sending %1 to the ground~pushes %1 backwards as [subj(%0)] sticks [poss(%0)] foot behind %1, knocking %1 to the ground
+&MOVE_THROW BESM Tag Tournament=10:2d4+6:grabs %1's arm, gives a quick spin, and tosses %1 across the arena floor~ducks under %1's defenses and tosses %1 to the far side of the arena
+&MOVE_JUMP BESM Tag Tournament=1:0:crouches for a second, then leaps high over %1's head~leaps into the air~jumps high into the air
+&MOVE_DASH BESM Tag Tournament=1:0:rushes at %1~suddenly runs at %1
+&MOVE_WEAPON BESM Tag Tournament=30:4d6:draws [poss(%0)] [default(%0/WEAPON,sword)] and strikes at %1, marking a solid hit~draws [poss(%0)] [default(%0/WEAPON,sword)] and spins it under %1's arm, striking %1 in the side
+&COMBO_4 BESM Tag Tournament=Heaven's Falling Star:dash dash jump weapon:4d6+3:[name(%0)] brings [poss(%0)] weapon down as [subj(%0)] drops from the leap, repeatedly striking %1 in the head as [subj(%0)] falls past
+&CMD_+ATTACK2 BESM Tag Tournament=$+attack * with *: think setq(0,first(pmatch(%0))); think setq(0,ifelse(isdbref(%q0),name(%q0),%0)); think setq(7,100); think setq(8,0); think setq(9,1); think setq(6,iter(%1,[setq(1,edit(trim(##,b),%b,_))][setq(2,trim(%q2 %q1,b))][setq(3,ulocal(%VF/FNC_COMBO,%q2,%#))][switch(0,%q9,,hasattr(ME,MOVE_%q1),attempts a strange maneuver and fails [ulocal(%VF/FNC_BAD_ADVERB)],gt(sub(%q7,first(get(ME/MOVE_%q1),:)),rand(100)),misses [ulocal(%VF/FNC_BAD_ADVERB)][setq(9,0)],eq(words(%q3),0),[setq(4,ulocal(%q3,%#,%q0))][setq(9,0)][setq(8,add(%q8,ulocal(%VF/FNC_COMBO_DAM,%q3)))]** [first(%q4,:)] ** [last(%q4,:)],[setq(4,ulocal(ME/MOVE_%q1,%#,%q0))][setq(8,add(%q8,ulocal(%VF/FNC_MOVE_DAM,%q1,%q2)))][ulocal(%VF/FNC_MOVE_MESSAGE,%q1,%#,%q0)][setq(7,sub(%q7,first(get(ME/MOVE_%q1),:)))])],,|)); @emit %N [ulocal(%VF/FNC_ANDLIST,trim(%q6,b,|),|)]!; @emit %q0 takes %q8 point[switch(%q8,1,,s)] of damage!
+&LIST.BAD_ADVERB BESM Tag Tournament=miserably poorly tragically terribly
+@Vf BESM Tag Tournament=#209
+&CMD_+COMBO BESM Tag Tournament=$+combo *:think setq(0,first(%0,:)); think setq(1,extract(%0,2,1,:)); think setq(2,last(%0,:)); think setq(3,get(%#/PROPLOC)); @switch/first 0=gt(words(%q1),2),{@pemit %#=>> A combo must be at least three moves.},{&COMBO %q3=%q0:%q1:%q2; @pemit %#=>> Setting your combo to %q0:%q1:%q2}
+@set BESM Tag Tournament/CMD_+COMBO = no_parse
+&LIST.SPECTATORS BESM Tag Tournament=#51
+@Aahear BESM Tag Tournament=@dolist [setdiff(v(LIST.SPECTATORS),lcon(loc(ME)))]={@pemit ##=ARENA>> %0}
+&COMBO_5 BESM Tag Tournament=Eclipse Strike:dash punch:1d8+1:[name(%0)] appears from nowhere, striking [name(%1)] across [poss(%1)] eyes.
+&COMBO_6 BESM Tag Tournament=Titan's Maul:dash jump punch punch:2d8+3:[name(%0)] leaps high into the sky, clenching [poss(%0)] fists tightly before crashing down and striking [name(%1)] in the face.
+&MOVE_BITE BESM Tag Tournament=10:5d2:gets [poss(%0)] teeth on [name(%1)]'s ear, biting it off
+@set BESM Tag Tournament=DARK
+@set BESM Tag Tournament=INHERIT
+@set BESM Tag Tournament=COMMANDS

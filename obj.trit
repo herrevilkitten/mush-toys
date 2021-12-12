@@ -1,0 +1,7 @@
+@create Trit=10
+@Desc Trit=It's a +trit. You know, trinary bit.
+&CMD_+TRIT Trit=$+trit:say [switch(rand(3),0,Yes,1,No,Maybe)].
+&CMD_+TRIT_ARG Trit=$+trit *:@emit %N asks of Trit[ifelse(config(say_uses_comma),%,,)] "%0"; say [switch(rand(3),0,Yes,1,No,Maybe)].
+@set Trit=DARK
+@set Trit=VISUAL
+@set Trit=COMMANDS
